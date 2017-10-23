@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Rechercher un film"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="20dp"
+        android:id="@+id/editText"
+
+    />
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:layout_marginTop="80dp"
+    >
+
+
+    <TextView
+        android:id="@+id/txtTitre"
+        android:layout_width="62dp"
+        android:layout_height="wrap_content"
+        android:text="Titre"
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:id="@+id/txtDuree"
+        android:layout_width="73dp"
+        android:layout_height="wrap_content"
+        android:text="Durée"
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:id="@+id/txtDateSortie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date sortie"
+        android:textAlignment="center"
+         />
+
+    <TextView
+        android:id="@+id/txtBudget"
+        android:layout_width="86dp"
+        android:layout_height="wrap_content"
+        android:text="Budget"
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:id="@+id/txtRecette"
+        android:layout_width="86dp"
+        android:layout_height="wrap_content"
+        android:text="Recette"
+        android:textAlignment="center"
+        />
+
+</LinearLayout>
+
+</RelativeLayout>
