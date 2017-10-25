@@ -6,39 +6,39 @@ package com.example.leamelanie.clientmobileprojetcinema.metier;
 
 public class Acteur {
     private static final long serialVersionUID = 1L;
-    private int noActeur;
-    private String nomActeur;
-    private String prenomActeur;
-    private String dateNaissance;
+    private int id;
+    private String nom;
+    private String prenom;
+    private String dateNaiss;
     private String dateDeces;
 
 
     public Acteur(int noActeur, String nomActeur, String prenomActeur, String dateNaissance, String dateDeces) {
         super();
-        this.noActeur= noActeur;
-        this.nomActeur = nomActeur;
-        this.prenomActeur = prenomActeur;
-        this.dateNaissance = dateNaissance;
+        this.id = noActeur;
+        this.nom = nomActeur;
+        this.prenom = prenomActeur;
+        this.dateNaiss = dateNaissance;
         this.dateDeces= dateDeces;
     }
 
     public Acteur() {
     }
 
-    public int getNoActeur() {
-        return noActeur;
+    public int getId() {
+        return id;
     }
 
-    public String getNomActeur() {
-        return nomActeur;
+    public String getNom() {
+        return nom;
     }
 
-    public String getPrenomActeur() {
-        return prenomActeur;
+    public String getPrenom() {
+        return prenom;
     }
 
-    public String getDateNaissance() {
-        return dateNaissance;
+    public String getDateNaiss() {
+        return dateNaiss;
     }
 
     public String getDateDeces() {
