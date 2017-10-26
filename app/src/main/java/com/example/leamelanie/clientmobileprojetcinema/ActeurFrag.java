@@ -17,6 +17,7 @@ import com.example.leamelanie.clientmobileprojetcinema.service.CinemaAppelWS;
 import java.util.List;
 
 import retrofit.RestAdapter;
+import retrofit.RetrofitError;
 
 /**
  * Created by LeaC on 25/10/2017.
@@ -39,11 +40,11 @@ public class ActeurFrag extends Fragment {
             TextView prenomActeur = new TextView(getActivity());
             TextView dateNaiss = new TextView(getActivity());
             TextView dateDeces = new TextView(getActivity());
-            id.setText(act.getId());
+            id.setText(String.valueOf(act.getId()));
             nomActeur.setText(act.getNom());
             prenomActeur.setText(act.getPrenom());
-            dateDeces.setText(act.getDateDeces());
-            dateNaiss.setText(act.getDateNaiss());
+            dateDeces.setText(String.valueOf(act.getDateDeces()));
+            dateNaiss.setText(String.valueOf(act.getDateNaiss()));
             row.addView(id);
             row.addView(nomActeur);
             row.addView(prenomActeur);
@@ -65,15 +66,19 @@ public class ActeurFrag extends Fragment {
         //doInBackground nécessaire pour WS
         @Override
         protected List<Acteur> doInBackground(String... params) {
-            CinemaAppelWS cinemaWS = new RestAdapter.Builder()
-                    .setEndpoint(CinemaAppelWS.BASE_URL)
-                    .build()
-                    .create(CinemaAppelWS.class);
+            try {
+                CinemaAppelWS cinemaWS = new RestAdapter.Builder()
+                        .setEndpoint(CinemaAppelWS.BASE_URL)
+                        .build()
+                        .create(CinemaAppelWS.class);
+                List<Acteur> mesActeurs = cinemaWS.mesActeurs();
+                return mesActeurs;
 
+            }catch (RetrofitError error){
+                System.out.println(error.toString());
+            }
             //String user = params[0];
-            List<Acteur> mesActeurs = cinemaWS.mesActeurs();
-
-            return mesActeurs;
+            return null;
 
         }
 
