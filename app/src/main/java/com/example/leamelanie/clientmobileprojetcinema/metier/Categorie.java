@@ -18,5 +18,11 @@ public class Categorie {
 
     }
 
-    //getteurs setteurs
+    public int getCodeCat() {
+        return codeCat;
+    }
+
+    public String getLibelleCat() {
+        return libelleCat;
+    }
 }

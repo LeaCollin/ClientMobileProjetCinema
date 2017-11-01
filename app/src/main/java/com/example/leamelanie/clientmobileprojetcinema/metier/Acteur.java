@@ -1,5 +1,7 @@
 package com.example.leamelanie.clientmobileprojetcinema.metier;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by LeaC on 18/10/2017.
  */
@@ -7,22 +9,21 @@ package com.example.leamelanie.clientmobileprojetcinema.metier;
 public class Acteur {
     private static final long serialVersionUID = 1L;
     private int id;
+    @SerializedName("nom")
     private String nom;
+    @SerializedName("prenom")
     private String prenom;
+    @SerializedName("dateNaiss")
     private String dateNaiss;
+    @SerializedName("dateDeces")
     private String dateDeces;
 
 
-    public Acteur(int noActeur, String nomActeur, String prenomActeur, String dateNaissance, String dateDeces) {
-        super();
-        this.id = noActeur;
+    public Acteur(String nomActeur, String prenomActeur, String dateNaissance, String dateDeces) {
         this.nom = nomActeur;
         this.prenom = prenomActeur;
         this.dateNaiss = dateNaissance;
         this.dateDeces= dateDeces;
-    }
-
-    public Acteur() {
     }
 
     public int getId() {
@@ -44,6 +45,20 @@ public class Acteur {
     public String getDateDeces() {
         return dateDeces;
     }
-    //getteurs setteurs
 
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public void setDateNaiss(String dateNaiss) {
+        this.dateNaiss = dateNaiss;
+    }
+
+    public void setDateDeces(String dateDeces) {
+        this.dateDeces = dateDeces;
+    }
 }

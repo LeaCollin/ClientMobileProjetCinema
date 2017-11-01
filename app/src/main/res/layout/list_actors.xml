@@ -1,91 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1"
-    android:paddingTop="100dp">
+    >
 
-    <TableRow>
-        <TextView android:text="Id"
-            android:layout_width="100dp"
-            android:layout_column="0"
-            android:layout_weight="1"/>
-        <TextView android:text="Nom"
-            android:layout_width="30dp"
-            android:layout_column="1"
-            android:layout_weight="1">
-        </TextView>
-        <TextView android:text="Prénom"
-            android:layout_width="30dp"
-            android:layout_column="2"
-            android:layout_weight="1">
-        </TextView>
-        <TextView android:text="DateNaiss"
-            android:layout_width="30dp"
-            android:layout_column="2"
-            android:layout_weight="1">
-        </TextView>
-        <TextView android:text="Décès"
-            android:layout_width="30dp"
-            android:layout_column="2"
-            android:layout_weight="1">
-        </TextView>
-    </TableRow>
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/tableau"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:weightSum="1"
+        android:paddingTop="100dp"
+        android:stretchColumns="0,1,2,3,4">
+    </TableLayout>
 
-    <ScrollView android:layout_height="120dp">
-        <TableLayout android:id="@+id/acteurs_table"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/acteurs_row"
-                android:layout_marginTop="280dip" />
-        </TableLayout>
-    </ScrollView>
-
-    <!-- <TextView
-        android:id="@+id/txtNoActeur"
-        android:layout_width="62dp"
-        android:layout_height="wrap_content"
-        android:text="No Act"
-        android:textAlignment="center"
-        android:layout_weight="0.15" />
-
-    <TextView
-        android:id="@+id/txtNomActeur"
-        android:layout_width="73dp"
-        android:layout_height="wrap_content"
-        android:text="Nom Acteur"
-        android:textAlignment="center"
-        android:layout_weight="0.24" />
-
-    <TextView
-        android:id="@+id/txtPrenomActeur"
+    <Button
+        android:id="@+id/ajoutActeur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Prenom Acteur"
-        android:textAlignment="center"
-        android:layout_weight="0.11" />
+        android:text="Ajouter un acteur"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true" />
 
-    <TextView
-        android:id="@+id/txtDateNais"
-        android:layout_width="86dp"
-        android:layout_height="wrap_content"
-        android:text="Date naiss"
-        android:textAlignment="center"
-        android:layout_weight="0.19" />
-
-    <TextView
-        android:id="@+id/txtDateDeces"
-        android:layout_width="86dp"
-        android:layout_height="wrap_content"
-        android:text="Date deces"
-        android:textAlignment="center"
-        android:layout_weight="0.19" />-->
-
-
-</TableLayout>
+</RelativeLayout>
 

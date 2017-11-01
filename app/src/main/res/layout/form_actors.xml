@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingTop="15dp"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Ajouter un acteur"
+        android:textSize="40dp"/>
+
+    <TextView
+        android:id="@+id/nom"
+        android:textSize="20dp"
+        android:textColor="#880000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nom"
+        android:paddingTop="70dp"
+        />
+    <EditText
+        android:id="@+id/editionNom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Nom de l'acteur"
+        android:layout_below="@+id/nom"/>
+    <TextView
+        android:id="@+id/prenom"
+        android:textSize="20dp"
+        android:textColor="#880000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prénom"
+        android:paddingTop="170dp"/>
+    <EditText
+        android:id="@+id/editionPrenom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Prénom de l'acteur"
+        android:layout_below="@+id/prenom"/>
+
+    <TextView
+        android:id="@+id/dateNaiss"
+        android:textSize="20dp"
+        android:textColor="#880000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date de naissance"
+        android:paddingTop="270dp"/>
+    <EditText
+        android:id="@+id/editionDateNaiss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Date de naissance"
+        android:layout_below="@+id/dateNaiss"/>
+
+    <TextView
+        android:id="@+id/dateDeces"
+        android:textSize="20dp"
+        android:textColor="#880000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date de décès"
+        android:paddingTop="370dp"/>
+    <EditText
+        android:id="@+id/editionDateDeces"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Date de décès"
+        android:layout_below="@+id/dateDeces"/>
+
+    <Button
+        android:id="@+id/envoyerRequete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

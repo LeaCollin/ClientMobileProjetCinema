@@ -6,19 +6,29 @@ package com.example.leamelanie.clientmobileprojetcinema.metier;
 
 public class Realisateur {
     private static final long serialVersionUID = 1L;
-    private int noRea;
-    private String nomRea;
-    private String prenomRea;
+    private int id;
+    private String nom;
+    private String prenom;
 
     public Realisateur(int noRea, String nomRea, String prenomRea) {
-        this.noRea = noRea;
-        this.nomRea = nomRea;
-        this.prenomRea = prenomRea;
+        this.id = noRea;
+        this.nom = nomRea;
+        this.prenom = prenomRea;
     }
 
     public Realisateur(){
 
     }
 
-    //getteurs and setteurs
+    public int getId() {
+        return id;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
 }

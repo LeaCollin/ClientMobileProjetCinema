@@ -6,28 +6,47 @@ package com.example.leamelanie.clientmobileprojetcinema.metier;
 
 public class Film {
     private static final long serialVersionUID = 1L;
-    private int noFilm;
+    private int id;
     private String titre;
     private int duree;
     private String dateSortie;
     private int budget;
     private int montantRecette;
-    private int noRea;
-    private int codeCat;
+    //rajouter realisateur et categorie
 
-    public Film(int noFilm, String titre, int duree, String dateSortie, int budget, int montantRecette, int noRea, int codeCat) {
-        this.noFilm = noFilm;
+    public Film(int noFilm, String titre, int duree, String dateSortie, int budget, int montantRecette) {
+        this.id = noFilm;
         this.titre = titre;
         this.duree = duree;
         this.dateSortie = dateSortie;
         this.budget = budget;
         this.montantRecette = montantRecette;
-        this.noRea = noRea;
-        this.codeCat = codeCat;
     }
 
     public Film() {
     }
 
-    //getteurs setteurs
+    public int getId() {
+        return id;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public int getDuree() {
+        return duree;
+    }
+
+    public String getDateSortie() {
+        return dateSortie;
+    }
+
+    public int getBudget() {
+        return budget;
+    }
+
+    public int getMontantRecette() {
+        return montantRecette;
+    }
 }
