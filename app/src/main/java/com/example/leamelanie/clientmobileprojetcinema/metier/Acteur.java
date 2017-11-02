@@ -9,12 +9,16 @@ import com.google.gson.annotations.SerializedName;
 public class Acteur {
     private static final long serialVersionUID = 1L;
     private int id;
+
     @SerializedName("nom")
     private String nom;
+
     @SerializedName("prenom")
     private String prenom;
+
     @SerializedName("dateNaiss")
     private String dateNaiss;
+
     @SerializedName("dateDeces")
     private String dateDeces;
 

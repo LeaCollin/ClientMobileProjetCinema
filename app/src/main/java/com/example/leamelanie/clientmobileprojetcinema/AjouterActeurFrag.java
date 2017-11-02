@@ -14,6 +14,9 @@ import android.widget.Toast;
 import com.example.leamelanie.clientmobileprojetcinema.metier.Acteur;
 import com.example.leamelanie.clientmobileprojetcinema.service.CinemaAppelWS;
 
+import java.io.IOException;
+import java.net.URL;
+import java.security.InvalidParameterException;
 import java.sql.SQLOutput;
 
 import okhttp3.ResponseBody;
@@ -61,14 +64,23 @@ public class AjouterActeurFrag extends Fragment {
         Retrofit retrofit = builder.build();
 
         CinemaAppelWS cinemaAppel = retrofit.create(CinemaAppelWS.class);
-        Call<Acteur> call = cinemaAppel.createActeur(acteur);
 
+        Call<Acteur> call = cinemaAppel.createActeur(acteur);
         call.enqueue(new Callback<Acteur>() {
+
             @Override
             public void onResponse(Call<Acteur> call, Response<Acteur> response) {
-                //PROBLEME + response.body().getId()
-                System.out.println(response.isSuccessful());
-                Toast.makeText(getActivity(),"Success",Toast.LENGTH_SHORT).show();
+                if (response.isSuccessful()) {
+                    System.out.println("REPONSE "+response.body());
+                    Toast.makeText(getActivity(),"Success",Toast.LENGTH_SHORT).show();
+                } else {
+                    try {
+                        Log.d("FAILURE MSG"," : "+response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(getActivity(),"Not Success",Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -77,7 +89,6 @@ public class AjouterActeurFrag extends Fragment {
 
             }
         });
-
     }
 
     public Acteur creerActeur(){
@@ -92,7 +103,7 @@ public class AjouterActeurFrag extends Fragment {
         final String dateNaissActeur = dateNaiss.getText().toString();
 
         EditText dateDeces = (EditText) getActivity().findViewById(R.id.editionDateDeces);
-        final String dateDecesActeur = nom.getText().toString();
+        final String dateDecesActeur = dateDeces.getText().toString();
 
         Acteur nouvelActeur = new Acteur(nomActeur,prenomActeur,dateNaissActeur,dateDecesActeur);
 
