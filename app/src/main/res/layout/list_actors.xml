@@ -17,7 +17,7 @@
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:paddingTop="100dp"
+            android:paddingTop="20dp"
             android:stretchColumns="0,1,2,3"
             android:layout_marginRight="10dp">
         </TableLayout>

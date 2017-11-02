@@ -28,7 +28,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Nom de l'acteur"
-        android:layout_below="@+id/nom"/>
+        android:layout_below="@+id/nom"
+        android:inputType="textCapWords"/>
     <TextView
         android:id="@+id/prenom"
         android:textSize="20dp"
@@ -42,7 +43,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Prénom de l'acteur"
-        android:layout_below="@+id/prenom"/>
+        android:layout_below="@+id/prenom"
+        android:inputType="textCapWords"/>
 
     <TextView
         android:id="@+id/dateNaiss"
@@ -57,7 +59,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Date de naissance"
-        android:layout_below="@+id/dateNaiss"/>
+        android:layout_below="@+id/dateNaiss"
+        android:inputType="date"/>
 
     <TextView
         android:id="@+id/dateDeces"
@@ -66,13 +69,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Date de décès"
-        android:paddingTop="370dp"/>
+        android:paddingTop="370dp" />
     <EditText
         android:id="@+id/editionDateDeces"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Date de décès"
-        android:layout_below="@+id/dateDeces"/>
+        android:layout_below="@+id/dateDeces"
+        android:inputType="date"/>
 
     <Button
         android:id="@+id/envoyerRequete"

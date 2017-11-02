@@ -66,14 +66,14 @@ public class AjouterActeurFrag extends Fragment {
             public void onResponse(Call<Acteur> call, Response<Acteur> response) {
                 if (response.isSuccessful()) {
                     System.out.println("REPONSE "+response.body());
-                    Toast.makeText(getActivity(),"Success",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"Ajout réussi",Toast.LENGTH_SHORT).show();
                 } else {
                     try {
                         Log.d("FAILURE MSG"," : "+response.errorBody().string());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    Toast.makeText(getActivity(),"Not Success",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"Ajout échoué",Toast.LENGTH_SHORT).show();
                 }
             }
 

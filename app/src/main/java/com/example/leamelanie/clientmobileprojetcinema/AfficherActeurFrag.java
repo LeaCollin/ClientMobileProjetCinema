@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -108,25 +107,22 @@ public class AfficherActeurFrag extends Fragment {
             switch (i){
                 case 0:
                     text.setText("Id");
-                    text.setTextColor(Color.BLUE);
                     break;
                 case 1:
                     text.setText("Nom");
-                    text.setTextColor(Color.BLUE);
                     break;
                 case 2:
                     text.setText("Prénom");
-                    text.setTextColor(Color.BLUE);
                     break;
                 case 3:
                     text.setText("Dates");
-                    text.setTextColor(Color.BLUE);
                     break;
                 case 4:
                     text.setText("");
-                    text.setTextColor(Color.BLUE);
                     break;
             }
+            text.setTextColor(Color.parseColor("#260096"));
+            text.setTextSize(20);
             text.setGravity(Gravity.CENTER);
             tableRow.addView(text);
         }
