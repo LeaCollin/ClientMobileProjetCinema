@@ -1,6 +1,8 @@
 package com.example.leamelanie.clientmobileprojetcinema;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -66,11 +68,23 @@ public class EditerActeurFrag extends Fragment {
         supprimerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendNetworkRequestDelete(acteurID);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Suppression")
+                        .setMessage("Voulez-vous supprimer cet acteur?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                sendNetworkRequestDelete(acteurID);
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
             }
         });
-
-
     }
 
     public class WS extends AsyncTask<String, Integer, Acteur> {
