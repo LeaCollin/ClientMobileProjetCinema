@@ -5,23 +5,31 @@
     android:layout_height="match_parent"
     >
 
-    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/tableau"
-        android:orientation="horizontal"
+    <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:weightSum="1"
-        android:paddingTop="100dp"
-        android:stretchColumns="0,1,2,3,4">
-    </TableLayout>
+        android:scrollbars="none"
+        android:layout_weight="1"
+        android:paddingBottom="50dp">
+
+        <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/tableau"
+            android:orientation="horizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:paddingTop="100dp"
+            android:stretchColumns="0,1,2,3"
+            android:layout_marginRight="10dp">
+        </TableLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/ajoutActeur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ajouter un acteur"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+       android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
 

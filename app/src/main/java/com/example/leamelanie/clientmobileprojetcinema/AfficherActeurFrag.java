@@ -1,5 +1,6 @@
 package com.example.leamelanie.clientmobileprojetcinema;
 
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 import com.example.leamelanie.clientmobileprojetcinema.metier.Acteur;
 import com.example.leamelanie.clientmobileprojetcinema.service.CinemaAppelWS;
 
+import java.util.HashMap;
 import java.util.List;
 
 import retrofit.RestAdapter;
@@ -29,6 +32,7 @@ import retrofit.RestAdapter;
 public class AfficherActeurFrag extends Fragment {
 
     private Button ajouterActeur;
+    private HashMap<Button,Integer> boutonsEdition;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,7 +44,11 @@ public class AfficherActeurFrag extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        //Action bouton
+        boutonsEdition = new HashMap<>();
+
+        new WS().execute();
+
+        //Actions boutons
         ajouterActeur = (Button) getActivity().findViewById(R.id.ajoutActeur);
         Button.OnClickListener answerListener = new Button.OnClickListener() {
             @Override
@@ -53,8 +61,6 @@ public class AfficherActeurFrag extends Fragment {
             }
         };
         ajouterActeur.setOnClickListener(answerListener);
-
-        new WS().execute();
     }
 
     //Lorsqu'on appuie sur le bouton AWS
@@ -85,6 +91,7 @@ public class AfficherActeurFrag extends Fragment {
     }
 
     public void afficherActeurs(List<Acteur> acteurs) {
+
         TableLayout acteurs_table = (TableLayout) getActivity().findViewById(R.id.tableau);
 
         // On affiche l'enreg dans une ligne
@@ -101,18 +108,23 @@ public class AfficherActeurFrag extends Fragment {
             switch (i){
                 case 0:
                     text.setText("Id");
+                    text.setTextColor(Color.BLUE);
                     break;
                 case 1:
                     text.setText("Nom");
+                    text.setTextColor(Color.BLUE);
                     break;
                 case 2:
                     text.setText("Prénom");
+                    text.setTextColor(Color.BLUE);
                     break;
                 case 3:
-                    text.setText("DateNaiss");
+                    text.setText("Dates");
+                    text.setTextColor(Color.BLUE);
                     break;
                 case 4:
-                    text.setText("Date Décès");
+                    text.setText("");
+                    text.setTextColor(Color.BLUE);
                     break;
             }
             text.setGravity(Gravity.CENTER);
@@ -125,6 +137,7 @@ public class AfficherActeurFrag extends Fragment {
                     new TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
             for(i = 0; i < 5; i++) {
+                final Button b = new Button(getActivity());
                 TextView text = new TextView(getActivity());
                 switch(i){
                     case 0:
@@ -137,18 +150,43 @@ public class AfficherActeurFrag extends Fragment {
                         text.setText(String.valueOf(acteurs.get(j).getPrenom()));
                         break;
                     case 3:
-                        text.setText(String.valueOf(acteurs.get(j).getDateNaiss()));
-                        break;
-                    case 4:
                         String deces = String.valueOf(acteurs.get(j).getDateDeces());
+                        String naiss = String.valueOf(acteurs.get(j).getDateNaiss());
                         if (!deces.equals("null")){
-                            text.setText(deces);
+                            text.setText(naiss+"\n"+deces);
+                        } else {
+                            text.setText(naiss);
                         }
                         break;
+                    case 4:
+                        b.setTextSize(10);
+                        b.setText("EDIT");
+                        boutonsEdition.put(b,acteurs.get(j).getId());
+                        b.setOnClickListener(new Button.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                FragmentManager frman = getFragmentManager();
+                                FragmentTransaction ftran = frman.beginTransaction();
+                                EditerActeurFrag ffrag = new EditerActeurFrag(boutonsEdition.get(b));
+                                ftran.replace(R.id.fragment, ffrag);
+                                ftran.commit();
+                            }
+                        });
+                        break;
                 }
-                tableRow.addView(text);
-                text.setGravity(Gravity.CENTER);
+                if (i==4){
+                    tableRow.addView(b);
+                } else {
+                    tableRow.setWeightSum(5);
+                    tableRow.addView(text);
+                    text.setGravity(Gravity.CENTER);
+                }
+                tableRow.setPadding(0,20,0,20);
             }
+
+
+
+
         }
     }
 

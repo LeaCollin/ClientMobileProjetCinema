@@ -7,11 +7,12 @@
     >
 
     <TextView
+        android:id="@+id/titre_page"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Ajouter un acteur"
-        android:textSize="40dp"/>
+        android:text="Ajout/Edition d'un acteur"
+        android:textSize="25dp"/>
 
     <TextView
         android:id="@+id/nom"

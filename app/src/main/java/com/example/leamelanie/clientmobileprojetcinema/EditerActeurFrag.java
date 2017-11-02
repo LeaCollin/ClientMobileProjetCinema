@@ -1,5 +1,6 @@
 package com.example.leamelanie.clientmobileprojetcinema;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,21 +15,32 @@ import android.widget.Toast;
 import com.example.leamelanie.clientmobileprojetcinema.metier.Acteur;
 import com.example.leamelanie.clientmobileprojetcinema.service.CinemaAppelWS;
 
+import org.w3c.dom.Text;
+
 import java.io.IOException;
+import java.util.List;
+
+import retrofit.RestAdapter;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-
 /**
- * Created by LeaC on 25/10/2017.
+ * Created by LeaC on 02/11/2017.
  */
 
-public class AjouterActeurFrag extends Fragment {
+@SuppressLint("ValidFragment")
+public class EditerActeurFrag extends Fragment {
 
-    Button requeteAjout;
+    Button requeteEdition;
+    int acteurID;
+
+    @SuppressLint("ValidFragment")
+    public EditerActeurFrag(int id) {
+        acteurID = id;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,14 +52,54 @@ public class AjouterActeurFrag extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        requeteAjout = (Button) getActivity().findViewById(R.id.envoyerRequete);
-        requeteAjout.setOnClickListener(new View.OnClickListener() {
+        new WS().execute();
+
+        requeteEdition = (Button) getActivity().findViewById(R.id.envoyerRequete);
+        requeteEdition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Acteur nouvelActeur = creerActeur();
-                sendNetworkRequest(nouvelActeur);
+                Acteur acteurEdit = creerActeur();
+                sendNetworkRequest(acteurEdit);
             }
         });
+
+    }
+
+    public class WS extends AsyncTask<String, Integer, Acteur> {
+
+        //doInBackground nécessaire pour WS
+        @Override
+        protected Acteur doInBackground(String... params) {
+            CinemaAppelWS cinemaWS = new RestAdapter.Builder()
+                    .setEndpoint(CinemaAppelWS.BASE_URL)
+                    .build()
+                    .create(CinemaAppelWS.class);
+
+            Acteur monActeur = cinemaWS.monActeur(acteurID);
+            return monActeur;
+
+        }
+
+        //result = resultat de doInBackground, fonction lancé automatiquement à la fin du process
+        @Override
+        protected void onPostExecute(Acteur result) {
+
+            super.onPostExecute(result);
+            remplirForm(result);
+
+        }
+
+    }
+
+    void remplirForm(Acteur act){
+        EditText nom = (EditText) getActivity().findViewById(R.id.editionNom);
+        EditText prenom = (EditText) getActivity().findViewById(R.id.editionPrenom);
+        EditText dateNaiss = (EditText) getActivity().findViewById(R.id.editionDateNaiss);
+        EditText dateDeces = (EditText) getActivity().findViewById(R.id.editionDateDeces);
+        nom.setText(act.getNom());
+        prenom.setText(act.getPrenom());
+        dateNaiss.setText(act.getDateNaiss());
+        dateDeces.setText(act.getDateDeces());
     }
 
     private void sendNetworkRequest(Acteur acteur){
@@ -59,7 +111,7 @@ public class AjouterActeurFrag extends Fragment {
 
         CinemaAppelWS cinemaAppel = retrofit.create(CinemaAppelWS.class);
 
-        Call<Acteur> call = cinemaAppel.createActeur(acteur);
+        Call<Acteur> call = cinemaAppel.editActeur(acteurID,acteur);
         call.enqueue(new Callback<Acteur>() {
 
             @Override
@@ -103,5 +155,4 @@ public class AjouterActeurFrag extends Fragment {
 
         return nouvelActeur;
     }
-
 }
