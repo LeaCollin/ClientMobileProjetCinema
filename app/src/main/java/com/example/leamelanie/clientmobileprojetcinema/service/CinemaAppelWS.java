@@ -5,6 +5,7 @@ import com.example.leamelanie.clientmobileprojetcinema.metier.Film;
 
 import java.util.List;
 
+import retrofit2.http.DELETE;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Body;
@@ -35,5 +36,8 @@ public interface CinemaAppelWS {
 
     @GET("/Acteur/{id}")
     Acteur monActeur(@retrofit.http.Path("id") int acteurId);
+
+    @DELETE("/Acteur/{id}")
+    Call<Acteur> deleteActeur(@retrofit2.http.Path("id") int acteurId);
 
 }

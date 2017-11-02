@@ -156,7 +156,7 @@ public class AfficherActeurFrag extends Fragment {
                         break;
                     case 4:
                         b.setTextSize(10);
-                        b.setText("EDIT");
+                        b.setText("Edit");
                         boutonsEdition.put(b,acteurs.get(j).getId());
                         b.setOnClickListener(new Button.OnClickListener() {
                             @Override

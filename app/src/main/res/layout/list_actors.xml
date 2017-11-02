@@ -19,6 +19,7 @@
             android:layout_height="fill_parent"
             android:paddingTop="20dp"
             android:stretchColumns="0,1,2,3"
+            android:shrinkColumns="4,5"
             android:layout_marginRight="10dp">
         </TableLayout>
     </ScrollView>

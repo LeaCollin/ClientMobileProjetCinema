@@ -32,6 +32,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class EditerActeurFrag extends Fragment {
 
     Button requeteEdition;
+    Button supprimerButton;
     int acteurID;
 
     @SuppressLint("ValidFragment")
@@ -51,14 +52,24 @@ public class EditerActeurFrag extends Fragment {
 
         new WS().execute();
 
+        //Actions boutons
         requeteEdition = (Button) getActivity().findViewById(R.id.envoyerRequete);
         requeteEdition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Acteur acteurEdit = creerActeur();
-                sendNetworkRequest(acteurEdit);
+                sendNetworkRequestEdit(acteurEdit);
             }
         });
+
+        supprimerButton = (Button) getActivity().findViewById(R.id.supprimerActeur);
+        supprimerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendNetworkRequestDelete(acteurID);
+            }
+        });
+
 
     }
 
@@ -99,7 +110,7 @@ public class EditerActeurFrag extends Fragment {
         dateDeces.setText(act.getDateDeces());
     }
 
-    private void sendNetworkRequest(Acteur acteur){
+    private void sendNetworkRequestEdit(Acteur acteur){
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(CinemaAppelWS.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create());
@@ -123,6 +134,41 @@ public class EditerActeurFrag extends Fragment {
                         e.printStackTrace();
                     }
                     Toast.makeText(getActivity(),"Edition échouée",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Acteur> call, Throwable t) {
+                Toast.makeText(getActivity(),"Error",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
+    private void sendNetworkRequestDelete(int id){
+        Retrofit.Builder builder = new Retrofit.Builder()
+                .baseUrl(CinemaAppelWS.BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create());
+
+        Retrofit retrofit = builder.build();
+
+        CinemaAppelWS cinemaAppel = retrofit.create(CinemaAppelWS.class);
+
+        Call<Acteur> call = cinemaAppel.deleteActeur(id);
+        call.enqueue(new Callback<Acteur>() {
+
+            @Override
+            public void onResponse(Call<Acteur> call, Response<Acteur> response) {
+                if (response.isSuccessful()) {
+                    System.out.println("REPONSE "+response.body());
+                    Toast.makeText(getActivity(),"Suppression réussie",Toast.LENGTH_SHORT).show();
+                } else {
+                    try {
+                        Log.d("FAILURE MSG"," : "+response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(getActivity(),"Suppression échouée",Toast.LENGTH_SHORT).show();
                 }
             }
 
