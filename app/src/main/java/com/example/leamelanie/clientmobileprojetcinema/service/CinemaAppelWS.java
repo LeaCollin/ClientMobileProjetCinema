@@ -20,7 +20,7 @@ import retrofit2.http.POST;
 
 public interface CinemaAppelWS {
 
-    public static final String BASE_URL = "http://192.168.1.22:8080"; //ipconfig perso
+    public static final String BASE_URL = "http://192.168.1.97:8080"; //ipconfig perso
 
     @GET("/Acteur/liste")
     List<Acteur> mesActeurs();

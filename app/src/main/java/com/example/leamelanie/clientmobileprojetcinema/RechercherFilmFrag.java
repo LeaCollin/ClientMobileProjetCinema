@@ -80,7 +80,7 @@ public class RechercherFilmFrag extends Fragment {
         public void description(Film film) {
             LinearLayout description = (LinearLayout) getActivity().findViewById(R.id.descriptionFilm);
 
-            for (int i = 0; i < 6; i++) {
+            for (int i = 0; i < 8; i++) {
                 TextView text = new TextView(getActivity());
                 switch (i) {
                     case 0:
@@ -100,6 +100,12 @@ public class RechercherFilmFrag extends Fragment {
                         break;
                     case 5:
                         text.setText(String.valueOf(film.getMontantRecette()));
+                        break;
+                    case 6:
+                        text.setText(String.valueOf(film.getRealisateur().getId()));
+                        break;
+                    case 7:
+                        text.setText(String.valueOf(film.getCodeCategorie()));
                         break;
                 }
                 description.addView(text);

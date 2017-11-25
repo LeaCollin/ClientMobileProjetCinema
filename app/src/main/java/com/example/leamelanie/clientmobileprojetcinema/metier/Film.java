@@ -12,15 +12,18 @@ public class Film {
     private String dateSortie;
     private int budget;
     private int montantRecette;
-    //rajouter realisateur et categorie
+    private Realisateur realisateur;
+    private Categorie codeCategorie;
 
-    public Film(int noFilm, String titre, int duree, String dateSortie, int budget, int montantRecette) {
+    public Film(int noFilm, String titre, int duree, String dateSortie, int budget, int montantRecette, Realisateur realisateur, Categorie codeCategorie) {
         this.id = noFilm;
         this.titre = titre;
         this.duree = duree;
         this.dateSortie = dateSortie;
         this.budget = budget;
         this.montantRecette = montantRecette;
+        this.realisateur = realisateur;
+        this.codeCategorie = codeCategorie;
     }
 
     public Film() {
@@ -48,5 +51,13 @@ public class Film {
 
     public int getMontantRecette() {
         return montantRecette;
+    }
+
+    public Realisateur getRealisateur() {
+        return realisateur;
+    }
+
+    public Categorie getCodeCategorie() {
+        return codeCategorie;
     }
 }

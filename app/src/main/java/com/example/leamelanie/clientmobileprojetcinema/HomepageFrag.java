@@ -49,7 +49,7 @@ public class HomepageFrag extends Fragment {
 
         //Remplir la liste des films
         listeFilms = getActivity().findViewById(R.id.films);
-        new WS().execute();
+        //new WS().execute();
 
         //Gérer les actions des boutons
         btAppelActeurs = (Button) getActivity().findViewById(R.id.btAppel);
@@ -60,6 +60,7 @@ public class HomepageFrag extends Fragment {
                 FragmentTransaction ftran = frman.beginTransaction();
                 AfficherActeurFrag ffrag = new AfficherActeurFrag();
                 ftran.replace(R.id.fragment, ffrag);
+                ftran.addToBackStack(null);
                 ftran.commit();
             }
         };
@@ -73,6 +74,7 @@ public class HomepageFrag extends Fragment {
                 FragmentTransaction ftran = frman.beginTransaction();
                 AfficherFilmFrag ffrag = new AfficherFilmFrag();
                 ftran.replace(R.id.fragment, ffrag);
+                ftran.addToBackStack(null);
                 ftran.commit();
             }
         };

@@ -115,7 +115,7 @@ public class AfficherFilmFrag extends Fragment {
             films_table.addView(tableRow,
                     new TableLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
-            for(i = 0; i < 5; i++) {
+            for(i = 0; i < 6; i++) {
                 TextView text = new TextView(getActivity());
                 switch(i){
                     case 0:

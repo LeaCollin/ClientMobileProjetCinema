@@ -56,6 +56,7 @@ public class AfficherActeurFrag extends Fragment {
                 FragmentTransaction ftran = frman.beginTransaction();
                 AjouterActeurFrag ffrag = new AjouterActeurFrag();
                 ftran.replace(R.id.fragment, ffrag);
+                ftran.addToBackStack(null);
                 ftran.commit();
             }
         };
@@ -165,6 +166,7 @@ public class AfficherActeurFrag extends Fragment {
                                 FragmentTransaction ftran = frman.beginTransaction();
                                 EditerActeurFrag ffrag = new EditerActeurFrag(boutonsEdition.get(b));
                                 ftran.replace(R.id.fragment, ffrag);
+                                ftran.addToBackStack(null);
                                 ftran.commit();
                             }
                         });
