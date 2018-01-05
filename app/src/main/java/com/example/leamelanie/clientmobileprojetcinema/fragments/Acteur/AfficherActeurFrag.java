@@ -1,4 +1,4 @@
-package com.example.leamelanie.clientmobileprojetcinema;
+package com.example.leamelanie.clientmobileprojetcinema.fragments.Acteur;
 
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -15,6 +15,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.example.leamelanie.clientmobileprojetcinema.R;
 import com.example.leamelanie.clientmobileprojetcinema.metier.Acteur;
 import com.example.leamelanie.clientmobileprojetcinema.service.CinemaAppelWS;
 

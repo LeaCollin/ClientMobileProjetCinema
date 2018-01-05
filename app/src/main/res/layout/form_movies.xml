@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    android:id="@+id/form"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingTop="15dp"
+    >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="none"
+        android:layout_weight="1"
+        android:paddingBottom="50dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/titre_page"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Ajout/Edition d'un film"
+                android:textSize="25dp"/>
+
+            <TextView
+                android:id="@+id/titre"
+                android:textSize="20dp"
+                android:textColor="#880000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Titre"
+                android:paddingTop="70dp"
+                />
+            <EditText
+                android:id="@+id/editionTitre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Titre du film"
+                android:layout_below="@+id/titre"
+                android:inputType="textCapWords"/>
+            <TextView
+                android:id="@+id/duree"
+                android:textSize="20dp"
+                android:textColor="#880000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Durée (en min)"
+                android:paddingTop="170dp"/>
+            <EditText
+                android:id="@+id/editionDuree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Durée du film"
+                android:layout_below="@+id/duree"
+                android:inputType="textCapWords"/>
+
+            <TextView
+                android:id="@+id/date"
+                android:textSize="20dp"
+                android:textColor="#880000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date de sortie"
+                android:paddingTop="270dp"/>
+            <EditText
+                android:id="@+id/editionDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Date de sortie"
+                android:layout_below="@+id/date"
+                android:inputType="date"/>
+
+            <TextView
+                android:id="@+id/budget"
+                android:textSize="20dp"
+                android:textColor="#880000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bugdet du film"
+                android:paddingTop="370dp" />
+            <EditText
+                android:id="@+id/editionBudget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Budget du film"
+                android:layout_below="@+id/budget"
+                android:inputType="number"/>
+
+            <TextView
+                android:id="@+id/recette"
+                android:textSize="20dp"
+                android:textColor="#880000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recette du film"
+                android:paddingTop="470dp" />
+            <EditText
+                android:id="@+id/editionRecette"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Recette"
+                android:layout_below="@+id/recette"
+                android:inputType="number"/>
+
+            <TextView
+                android:id="@+id/realisateur"
+                android:textSize="20dp"
+                android:textColor="#880000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Réalisateur"
+                android:paddingTop="570dp" />
+
+            <Spinner
+                android:id="@+id/editionRealisateur"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="600dp"
+                />
+
+            <TextView
+                android:id="@+id/categorie"
+                android:textSize="20dp"
+                android:textColor="#880000"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Catégorie"
+                android:paddingTop="670dp" />
+
+            <Spinner
+                android:id="@+id/editionCategorie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="700dp"
+                />
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/envoyerRequeteFilm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OK"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"/>
+
+    <Button
+        android:id="@+id/supprimerFilm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Supprimer"
+        android:layout_toLeftOf="@id/envoyerRequete"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

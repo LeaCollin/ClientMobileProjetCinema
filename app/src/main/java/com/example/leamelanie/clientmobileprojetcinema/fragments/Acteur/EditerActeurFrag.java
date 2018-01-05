@@ -1,4 +1,4 @@
-package com.example.leamelanie.clientmobileprojetcinema;
+package com.example.leamelanie.clientmobileprojetcinema.fragments.Acteur;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.leamelanie.clientmobileprojetcinema.R;
 import com.example.leamelanie.clientmobileprojetcinema.metier.Acteur;
 import com.example.leamelanie.clientmobileprojetcinema.service.CinemaAppelWS;
 

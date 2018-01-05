@@ -6,23 +6,23 @@ package com.example.leamelanie.clientmobileprojetcinema.metier;
 
 public class Categorie {
     private static final long serialVersionUID = 1L;
-    private int codeCat;
-    private String libelleCat;
+    private String code;
+    private String libelle;
 
-    public Categorie(int codeCat, String libelleCat) {
-        this.codeCat = codeCat;
-        this.libelleCat = libelleCat;
+    public Categorie(String codeCat, String libelleCat) {
+        this.code = codeCat;
+        this.libelle = libelleCat;
     }
 
     public Categorie(){
 
     }
 
-    public int getCodeCat() {
-        return codeCat;
+    public String getCode() {
+        return code;
     }
 
-    public String getLibelleCat() {
-        return libelleCat;
+    public String getLibelle() {
+        return libelle;
     }
 }

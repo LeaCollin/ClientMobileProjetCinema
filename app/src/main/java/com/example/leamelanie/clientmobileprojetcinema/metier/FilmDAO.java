@@ -1,10 +1,12 @@
 package com.example.leamelanie.clientmobileprojetcinema.metier;
 
+import com.google.gson.Gson;
+
 /**
  * Created by LeaC on 19/10/2017.
  */
 
-public class Film {
+public class FilmDAO {
     private static final long serialVersionUID = 1L;
     private int id;
     private String titre;
@@ -12,21 +14,20 @@ public class Film {
     private String dateSortie;
     private int budget;
     private int montantRecette;
-    private Realisateur realisateur;
-    private Categorie codeCategorie;
+    private Object realisateur;
+    private Object categorie;
 
-    public Film(int noFilm, String titre, int duree, String dateSortie, int budget, int montantRecette, Realisateur realisateur, Categorie codeCategorie) {
-        this.id = noFilm;
+    public FilmDAO(String titre, int duree, String dateSortie, int budget, int montantRecette, int realisateur, String codeCategorie) {
         this.titre = titre;
         this.duree = duree;
         this.dateSortie = dateSortie;
         this.budget = budget;
         this.montantRecette = montantRecette;
         this.realisateur = realisateur;
-        this.codeCategorie = codeCategorie;
+        this.categorie = codeCategorie;
     }
 
-    public Film() {
+    public FilmDAO() {
     }
 
     public int getId() {
@@ -53,11 +54,11 @@ public class Film {
         return montantRecette;
     }
 
-    public Realisateur getRealisateur() {
+    public Object getRealisateur() {
         return realisateur;
     }
 
-    public Categorie getCodeCategorie() {
-        return codeCategorie;
+    public Object getCategorie() {
+        return categorie;
     }
 }

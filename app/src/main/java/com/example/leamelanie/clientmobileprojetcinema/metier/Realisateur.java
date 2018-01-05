@@ -6,11 +6,11 @@ package com.example.leamelanie.clientmobileprojetcinema.metier;
 
 public class Realisateur {
     private static final long serialVersionUID = 1L;
-    private int id;
+    private Double id;
     private String nom;
     private String prenom;
 
-    public Realisateur(int noRea, String nomRea, String prenomRea) {
+    public Realisateur(Double noRea, String nomRea, String prenomRea) {
         this.id = noRea;
         this.nom = nomRea;
         this.prenom = prenomRea;
@@ -20,7 +20,7 @@ public class Realisateur {
 
     }
 
-    public int getId() {
+    public Double getId() {
         return id;
     }
 
