@@ -18,6 +18,7 @@ import com.example.leamelanie.clientmobileprojetcinema.fragments.Film.AfficherFi
 import com.example.leamelanie.clientmobileprojetcinema.fragments.Film.RechercherFilmFrag;
 import com.example.leamelanie.clientmobileprojetcinema.fragments.Film.RechercherFilmsParCatFrag;
 import com.example.leamelanie.clientmobileprojetcinema.fragments.Film.RechercherFilmsParRealFrag;
+import com.example.leamelanie.clientmobileprojetcinema.metier.Acteur;
 import com.example.leamelanie.clientmobileprojetcinema.metier.Categorie;
 import com.example.leamelanie.clientmobileprojetcinema.metier.FilmDAO;
 import com.example.leamelanie.clientmobileprojetcinema.metier.Realisateur;
@@ -35,11 +36,6 @@ import retrofit.RestAdapter;
 
 public class HomepageFrag extends Fragment {
 
-    private Button btAppelActeurs;
-    private Button btAppelFilms;
-    private Button btRechercheFilm;
-    private Button btRechercheFilmsParRealisateur;
-    private Button btRechercheFilmsParCategorie;
     Spinner listeFilms;
     Spinner listeRealisateurs;
     Spinner listeCategories;
@@ -61,17 +57,25 @@ public class HomepageFrag extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        //Remplir la liste des films
         listeFilms = getActivity().findViewById(R.id.films);
         listeRealisateurs = getActivity().findViewById(R.id.realisateurs);
         listeCategories = getActivity().findViewById(R.id.categories);
+
         new WS_Categories().execute();
         new WS_Realisateurs().execute();
         new WS_Films().execute();
 
+        creationBoutons();
 
-        //Gérer les actions des boutons
-        btAppelActeurs = (Button) getActivity().findViewById(R.id.btAppel);
+    }
+
+    public void creationBoutons() {
+        Button btAppelActeurs = (Button) getActivity().findViewById(R.id.btAppel);
+        Button btAppelFilms = (Button) getActivity().findViewById(R.id.btAppelFilm);
+        Button btRechercheFilm = (Button) getActivity().findViewById(R.id.rechercher);
+        Button btRechercheFilmsParRealisateur = (Button) getActivity().findViewById(R.id.rechercherFilmsParReal);
+        Button btRechercheFilmsParCategorie = (Button) getActivity().findViewById(R.id.rechercherFilmsParTheme);
+
         Button.OnClickListener answerListener = new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,9 +88,7 @@ public class HomepageFrag extends Fragment {
                 ftran.commit();
             }
         };
-        btAppelActeurs.setOnClickListener(answerListener);
 
-        btAppelFilms = (Button) getActivity().findViewById(R.id.btAppelFilm);
         Button.OnClickListener answerListenerFilm = new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,9 +101,7 @@ public class HomepageFrag extends Fragment {
                 ftran.commit();
             }
         };
-        btAppelFilms.setOnClickListener(answerListenerFilm);
 
-        btRechercheFilm = (Button) getActivity().findViewById(R.id.rechercher);
         Button.OnClickListener answerListenerRechercheFilm = new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,10 +115,8 @@ public class HomepageFrag extends Fragment {
                 ftran.commit();
             }
         };
-        btRechercheFilm.setOnClickListener(answerListenerRechercheFilm);
 
-        btRechercheFilmsParRealisateur = (Button) getActivity().findViewById(R.id.rechercherFilmsParReal
-        );
+
         Button.OnClickListener answerListenerRechercheFilmsParRealisateur = new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,10 +130,8 @@ public class HomepageFrag extends Fragment {
                 ftran.commit();
             }
         };
-        btRechercheFilmsParRealisateur.setOnClickListener(answerListenerRechercheFilmsParRealisateur);
 
-        btRechercheFilmsParCategorie = (Button) getActivity().findViewById(R.id.rechercherFilmsParTheme
-        );
+
         Button.OnClickListener answerListenerRechercheFilmsParCategorie= new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -149,6 +145,11 @@ public class HomepageFrag extends Fragment {
                 ftran.commit();
             }
         };
+
+        btAppelActeurs.setOnClickListener(answerListener);
+        btAppelFilms.setOnClickListener(answerListenerFilm);
+        btRechercheFilm.setOnClickListener(answerListenerRechercheFilm);
+        btRechercheFilmsParRealisateur.setOnClickListener(answerListenerRechercheFilmsParRealisateur);
         btRechercheFilmsParCategorie.setOnClickListener(answerListenerRechercheFilmsParCategorie);
     }
 
@@ -170,26 +171,16 @@ public class HomepageFrag extends Fragment {
         protected void onPostExecute(List<FilmDAO> result) {
 
             super.onPostExecute(result);
+            CinemaService.films.clear();
             titresFilms.clear();
             for (FilmDAO f: result) {
                  titresFilms.add(f.getTitre());
+                 CinemaService.films.add(f);
             }
-            remplirFilms(titresFilms);
+            remplirSpinner(titresFilms,listeFilms);
 
 
         }
-
-    }
-
-    public void remplirFilms(List<String> titres) {
-        ArrayAdapter adapter = new ArrayAdapter(
-                getActivity(),
-                android.R.layout.simple_spinner_item,
-                titres
-        );
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        listeFilms.setAdapter(adapter);
 
     }
 
@@ -217,21 +208,9 @@ public class HomepageFrag extends Fragment {
                 CinemaService.realisateurs.add(r);
                 nomsRealisateur.add(r.getNom());
             }
-            remplirRealisateurs(nomsRealisateur);
+            remplirSpinner(nomsRealisateur,listeRealisateurs);
 
         }
-
-    }
-
-    public void remplirRealisateurs(List<String> noms) {
-        ArrayAdapter adapter = new ArrayAdapter(
-                getActivity(),
-                android.R.layout.simple_spinner_item,
-                noms
-        );
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        listeRealisateurs.setAdapter(adapter);
 
     }
 
@@ -259,21 +238,21 @@ public class HomepageFrag extends Fragment {
                 CinemaService.categories.add(c);
                 libellesCategorie.add(c.getLibelle());
             }
-            remplirCategories(libellesCategorie);
+            remplirSpinner(libellesCategorie,listeCategories);
 
         }
 
     }
 
-    public void remplirCategories(List<String> libelles) {
+    public void remplirSpinner(List<String> items,Spinner spinner) {
         ArrayAdapter adapter = new ArrayAdapter(
                 getActivity(),
                 android.R.layout.simple_spinner_item,
-                libelles
+                items
         );
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        listeCategories.setAdapter(adapter);
+        spinner.setAdapter(adapter);
 
     }
 }

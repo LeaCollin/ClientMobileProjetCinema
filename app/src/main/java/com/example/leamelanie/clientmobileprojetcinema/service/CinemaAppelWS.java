@@ -23,13 +23,16 @@ import retrofit2.http.POST;
 
 public interface CinemaAppelWS {
 
-    public static final String BASE_URL = "http://192.168.0.12:8080"; //42.98:8080"; //ipconfig perso ATTENTION certaines wifi ne marhce pas -> se mettre en cablé
+    public static final String BASE_URL = "http://192.168.42.98:8080"; //42.98:8080"; //ipconfig perso ATTENTION certaines wifi ne marhce pas -> se mettre en cablé
 
     @GET("/Acteur/liste")
     List<Acteur> mesActeurs();
 
     @GET("/Film/liste")
     List<FilmDAO> mesFilms();
+
+    @GET("/Film/acteurs/{id}")
+    List<Acteur> mesActeursPourUnFilm(@retrofit.http.Path("id") int idFilm);
 
     @GET("/Realisateur/liste")
     List<Realisateur> mesRealisateurs();

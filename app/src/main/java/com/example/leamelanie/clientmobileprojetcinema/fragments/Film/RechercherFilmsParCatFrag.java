@@ -74,6 +74,8 @@ public class RechercherFilmsParCatFrag extends Fragment {
         LinearLayout liste = (LinearLayout) getActivity().findViewById(R.id.liste_films);
         TextView text = new TextView(getActivity());
         text.setText(titre);
+        text.setPadding(20,0,0,15);
+        text.setTextSize(20);
         liste.addView(text);
         text.setGravity(Gravity.CENTER);
     }

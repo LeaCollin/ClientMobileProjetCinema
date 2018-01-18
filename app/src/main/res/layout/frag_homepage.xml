@@ -10,6 +10,7 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/welcome"
         android:paddingBottom="15dp"
+        android:paddingTop="20dp"
         android:textSize="30dp"/>
 
     <ImageView
@@ -18,7 +19,7 @@
         android:layout_height="150dp"
         android:src="@drawable/cinema"
         android:layout_centerHorizontal="true"
-        android:paddingTop="50dp"/>
+        android:paddingTop="60dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,19 +27,21 @@
         android:orientation="horizontal"
         android:layout_below="@+id/picture"
         android:id="@+id/buttons"
+        android:gravity="center_horizontal"
+        android:paddingBottom="20dp"
         >
 
         <Button
             android:text="Afficher les acteurs"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/btAppel"
             />
 
         <Button
             android:text="Afficher les films"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/btAppelFilm"
             />
 
@@ -48,7 +51,7 @@
         android:id="@+id/rechercheFilm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Rechercher un film :"
+        android:text="Détails du film et acteurs"
         android:layout_below="@id/buttons"
         android:layout_alignParentEnd="true"/>
 
@@ -56,13 +59,13 @@
         android:id="@+id/films"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="240dp"
         />
 
     <Button
         android:id="@+id/rechercher"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/films"
         android:text="Ok" />
@@ -71,7 +74,7 @@
         android:id="@+id/rechercheFilmsParRealisateur"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Rechercher films de :"
+        android:text="Films réalisés par"
         android:layout_below="@id/rechercher"
         android:layout_alignParentEnd="true"/>
 
@@ -85,7 +88,7 @@
     <Button
         android:id="@+id/rechercherFilmsParReal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/realisateurs"
         android:text="Ok" />
@@ -94,7 +97,7 @@
         android:id="@+id/rechercheFilmsParCategorie"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Rechercher films de type :"
+        android:text="Films de type"
         android:layout_below="@id/rechercherFilmsParReal"
         android:layout_alignParentEnd="true"/>
 
@@ -102,13 +105,13 @@
         android:id="@+id/categories"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="420dp"
+        android:layout_marginTop="400dp"
         />
 
     <Button
         android:id="@+id/rechercherFilmsParTheme"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/categories"
         android:text="Ok" />

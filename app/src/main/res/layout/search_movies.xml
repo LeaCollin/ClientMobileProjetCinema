@@ -8,7 +8,18 @@
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/liste_films"
-        android:paddingTop="100dp"
-        />
+        android:paddingTop="50dp"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Liste des films:"
+            android:id="@+id/titreFilmResearch"
+            android:paddingBottom="15dp"
+            android:textSize="30dp"
+            android:textAlignment="center"
+            />
+        </LinearLayout>
 
 </RelativeLayout>

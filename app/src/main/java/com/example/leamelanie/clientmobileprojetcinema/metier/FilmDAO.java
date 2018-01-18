@@ -17,7 +17,7 @@ public class FilmDAO {
     private Object realisateur;
     private Object categorie;
 
-    public FilmDAO(String titre, int duree, String dateSortie, int budget, int montantRecette, int realisateur, String codeCategorie) {
+    public FilmDAO(int id,String titre, int duree, String dateSortie, int budget, int montantRecette, int realisateur, String codeCategorie) {
         this.titre = titre;
         this.duree = duree;
         this.dateSortie = dateSortie;
@@ -29,6 +29,8 @@ public class FilmDAO {
 
     public FilmDAO() {
     }
+
+
 
     public int getId() {
         return id;

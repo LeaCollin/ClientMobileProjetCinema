@@ -1,8 +1,10 @@
 package com.example.leamelanie.clientmobileprojetcinema.service;
 
+import com.example.leamelanie.clientmobileprojetcinema.metier.Acteur;
 import com.example.leamelanie.clientmobileprojetcinema.metier.Categorie;
 import com.example.leamelanie.clientmobileprojetcinema.metier.FilmDAO;
 import com.example.leamelanie.clientmobileprojetcinema.metier.FilmDTO;
+import com.example.leamelanie.clientmobileprojetcinema.metier.PersonnageDTO;
 import com.example.leamelanie.clientmobileprojetcinema.metier.Realisateur;
 import com.google.gson.Gson;
 
@@ -17,7 +19,7 @@ public class CinemaService {
 
     public static List<Realisateur> realisateurs = new ArrayList<>();
     public static List<Categorie> categories = new ArrayList<>();
-
+    public static List<FilmDAO> films = new ArrayList<>();
 
     //Méthode à utiliser dans les doinbackgrounds -> récupère filmDAO et retourne filmDTO
     public static List<FilmDTO> filmDAOtoDTO(List<FilmDAO> filmsDAO ) {
@@ -38,6 +40,7 @@ public class CinemaService {
                 }
             } else {
                 String realString = ""+f.getRealisateur();
+                System.out.println("realisateur"+realString);
                 real = g.fromJson(realString, Realisateur.class);
 
             }
@@ -51,6 +54,7 @@ public class CinemaService {
                 }
             } else {
                 String catString = ""+f.getCategorie();
+                System.out.println("categorie"+catString);
                 cat = g.fromJson(catString, Categorie.class);
 
             }
